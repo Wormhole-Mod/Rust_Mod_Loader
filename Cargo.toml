@@ -8,15 +8,15 @@ name = "rust_mod_loader"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-# Lua scripting engine bindings (Lua 5.4 / LuaJIT compatible features)
+# Lua scripting engine bindings
 mlua = { version = "0.9", features = ["lua54", "vendored", "serialize"] }
 
-# Serialization for config/disabled mod states and data parsing
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
-# Async and HTTP utilities for unrestricted file/network access
-reqwest = { version = "0.11", features = ["blocking", "json"] }
+# Reqwest configured with rustls-tls to avoid native system OpenSSL cross-compilation errors on Android
+reqwest = { version = "0.11", default-features = false, features = ["blocking", "json", "rustls-tls"] }
 
-# Logging for debugging via mobile logcats
+# Logging
 log = "0.4"
