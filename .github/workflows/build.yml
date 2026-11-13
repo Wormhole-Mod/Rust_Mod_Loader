@@ -1,0 +1,27 @@
+name: Build RML .hnmod
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - name: Build for Android (ARM64)
+        run: cargo build --release --target aarch64-linux-android
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust_mod_loader-hnmod
+          path: target/aarch64-linux-android/release/librust_mod_loader.so
+          
