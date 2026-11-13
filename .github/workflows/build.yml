@@ -11,12 +11,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Rust Toolchain
+      - name: Install Rust Toolchain & Android Target
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
 
-      - name: Build for Android (ARM64)
+      - name: Build for Android (ARM64 Release)
         run: cargo build --release --target aarch64-linux-android
 
       - name: Upload Artifact
