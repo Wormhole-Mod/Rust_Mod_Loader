@@ -1,0 +1,7 @@
+[mod]
+id = "rust_mod_loader"
+name = "Rust Mod Loader (RML)"
+version = "1.0.0"
+authors = ["Sayed Sadat"]
+description = "Unrestricted mobile mod loader supporting Lua scripts and raw resource folders."
+type = "native"
